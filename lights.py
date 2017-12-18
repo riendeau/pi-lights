@@ -36,13 +36,14 @@ def scroll(col1, col2):
             time.sleep(0.08)
     
 if __name__ == "__main__":
-    if sys.argv[1] == "Badgers":
+    team = sys.argv[1].lower()
+    if team == "badgers":
 	alternate(RED, WHITE)
-    elif sys.argv[1] == "Packers":
+    elif team == "packers":
         alternate(GREEN, YELLOW)
-    elif sys.argv[1] == "Brewers":
+    elif team == "brewers":
         alternate(YELLOW, BLUE)
-    elif sys.argv[1] == "Bucks":
+    elif team == "bucks":
         alternate(PURPLE, GREEN)
     else:
         pixels.clear()
