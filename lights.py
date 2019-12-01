@@ -21,27 +21,28 @@ colorRgb = {
   "cream": [238, 255, 198],
   "maroon": [138, 0, 7],
   "orange": [255, 120, 0],
-  "pink": [255, 105, 180],
+  "pink": [255, 105, 180]
+}
+
+teamColors = {
+  "badgers": ["red", "white"],
+  "packers": ["green", "yellow"],
+  "brewers": ["yellow", "blue"],
+  "bucks": ["purple", "green"],
+  "hokies": ["maroon", "orange"],
+  "christmas": ["red", "green"]
 }
 
 colors = {}
 for c in colorRgb:
   colors[c] = [Adafruit_WS2801.RGB_to_color(colorRgb[c][2], colorRgb[c][1], colorRgb[c][0])]
+for c in teamColors:
+  colors[c] = [colors[teamColors[c][0]][0], colors[teamColors[c][1]][0]]
 
-colors["badgers"] = [colors["red"], colors["white"]]
-colors["packers"] = [colors["green"], colors["yellow"]]
-colors["brewers"] = [colors["yellow"], colors["blue"]]
-colors["bucks"] = [colors["purple"], colors["green"]]
-colors["hokies"] = [colors["maroon"], colors["orange"]]
-colors["christmas"] = [colors["red"], colors["green"]]
-
-def alternate(col1, col2, start = 0, end = pixels.count()):
+def alternate(colAry, start = 0, end = pixels.count()):
     for i in range(start, end):
         if i >= 0 and i < pixels.count():
-            if (end - i) % 2 == 1:
-                pixels.set_pixel(i, col1)
-            else:
-                pixels.set_pixel(i, col2)
+            pixels.set_pixel(i, colAry[i % len(colAry)])
 
 def scroll(col1, col2):
     for length in range(1, pixels.count()):
@@ -58,11 +59,7 @@ if __name__ == "__main__":
         team = sys.argv[1].lower()
 
     if team in colors:
-        c = colors[team]
-        if len(c) == 1:
-            alternate(c[0], c[0])
-        else:
-            alternate(c[0][0], c[1][0]) 
+        alternate(colors[team])
     else:
         pixels.clear()
 
