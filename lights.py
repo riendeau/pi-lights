@@ -30,14 +30,17 @@ teamColors = {
   "brewers": ["yellow", "blue"],
   "bucks": ["purple", "green"],
   "hokies": ["maroon", "orange"],
-  "christmas": ["red", "green"]
+  "christmas": ["red", "green"],
+  "usa": ["red", "white", "blue"]
 }
 
 colors = {}
 for c in colorRgb:
   colors[c] = [Adafruit_WS2801.RGB_to_color(colorRgb[c][2], colorRgb[c][1], colorRgb[c][0])]
 for c in teamColors:
-  colors[c] = [colors[teamColors[c][0]][0], colors[teamColors[c][1]][0]]
+  colors[c] = []
+  for colorName in teamColors[c]:
+    colors[c].append(colors[colorName][0])
 
 def alternate(colAry, start = 0, end = pixels.count()):
     for i in range(start, end):
