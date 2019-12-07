@@ -56,14 +56,18 @@ def scroll(col1, col2):
             time.sleep(0.08)
     
 if __name__ == "__main__":
+    allColors = []
     if len(sys.argv) < 2:
         team = ""
     else:
-        team = sys.argv[1].lower()
+        for i in range(1, len(sys.argv)):
+            team = sys.argv[i].lower()
+            if team in colors:
+                allColors.extend(colors[team])
 
-    if team in colors:
-        alternate(colors[team])
-    else:
+    if len(allColors) == 0:
         pixels.clear()
+    else:
+        alternate(allColors)
 
     pixels.show()
