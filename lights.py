@@ -1,4 +1,6 @@
 # Based on code from https://tutorials-raspberrypi.com/how-to-control-a-raspberry-pi-ws2801-rgb-led-strip/
+# Need to enable SPI bus (sudo raspi-config)
+# Need to install adafruit-ws2801: sudo apt-get update && sudo apt-get install python-pip -y && sudo pip install adafruit-ws2801
 import sys
 import time
 import RPi.GPIO as GPIO
