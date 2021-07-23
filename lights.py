@@ -33,7 +33,8 @@ teamColors = {
   "bucks": ["purple", "green"],
   "hokies": ["maroon", "orange"],
   "christmas": ["red", "green"],
-  "usa": ["red", "white", "blue"]
+  "usa": ["red", "white", "blue"],
+  "rainbow": ["red", "orange", "yellow", "green", "blue", "purple"]
 }
 
 colors = {}
