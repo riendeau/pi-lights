@@ -58,19 +58,25 @@ def scroll(col1, col2):
             pixels.show()
             time.sleep(0.08)
     
-if __name__ == "__main__":
+def run(input):
     allColors = []
-    if len(sys.argv) < 2:
-        team = ""
-    else:
-        for i in range(1, len(sys.argv)):
-            team = sys.argv[i].lower()
-            if team in colors:
-                allColors.extend(colors[team])
-
+    for i in range(0, len(input)):
+        team = input[i].lower()
+        if team in colors:
+            allColors.extend(colors[team])
+    
     if len(allColors) == 0:
         pixels.clear()
     else:
         alternate(allColors)
-
+    
     pixels.show()
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1].lower() == "i":
+        inputText = ""
+        while inputText != "stop":
+            inputText = raw_input("Enter colors {} --> ".format(colorRgb.keys()))
+            run(inputText.split(' '))
+    else:
+        run(sys.argv)
